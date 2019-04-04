@@ -2,6 +2,8 @@ import * as React from 'react';
 import {RouteComponentProps, Prompt } from "react-router-dom";
 import { IProduct, products} from "./ProductsData";
 
+import Product from "./Product";
+
 // ideally the type should be number, but in this case RouteComponentProps only allows to have Route parameters of type string or undefined
 
 // RouteComponentProps gives us match {} containing params {}, containing id route parameter
@@ -45,21 +47,10 @@ class ProductPage extends React.Component<Props, Istate> {
                 <Prompt when={!this.state.added} message={this.navAwayMessage}/>
                 {
                     product ? (
-                        <React.Fragment>
-                            <h1>{product.name}</h1>
-                            <p>{product.description}</p>
-                            <p className="product-price">
-                                {
-                                new Intl.NumberFormat("en-US", {
-                                    currency: "USD",
-                                    style: "currency"
-                                }).format(product.price)
-                                }
-                            </p>
-                            { !this.state.added && (<button onClick={this.handleClick}>Add to basket</button>)}
-                        </React.Fragment>) : (
-                        <p>Product not found</p>
-                    )
+                        <Product product={product}
+                                 inBasket={this.state.added}
+                                 onAddToBasket={this.handleClick}/>
+                    ) : ( <p>Product not found</p>)
                 }
             </div>
         )
