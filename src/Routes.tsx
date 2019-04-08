@@ -8,6 +8,7 @@ import Header from  "./Header";
 import ProductPage from "./ProductPage";
 import NotFoundPage from "./NotFoundPage";
 import LoginPage from "./LoginPage";
+import ContactUsPage from "./ContactUsPage";
 
 // dynamic import with react lazy function
 const AdminPage = React.lazy(() => import("./AdminPage"));
@@ -26,6 +27,7 @@ const Routes: React.SFC<RouteComponentProps> = (props) => {
                         <Redirect exact={true} from="/" to="/products"/>
                         <Route path="/products" exact={true} component={ProductsPage} />
                         <Route path="/products/:id" component={ProductPage} />
+                        <Route path="/contact" component={ContactUsPage} />
                         <Route path="/admin">
                             { loggedIn ? (
                                 <Suspense fallback={<div className="page-container">Loading... </div>}>
