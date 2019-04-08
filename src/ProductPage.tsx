@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {RouteComponentProps, Prompt } from "react-router-dom";
-import { IProduct, products} from "./ProductsData";
+import { getProduct, IProduct, products} from "./ProductsData";
 
 import Product from "./Product";
 
@@ -13,6 +13,7 @@ interface Istate {
     // optional because it is going to be undefined at first
     product?: IProduct;
     added: boolean;
+    loading: boolean;
 }
 
 class ProductPage extends React.Component<Props, Istate> {
@@ -20,16 +21,18 @@ class ProductPage extends React.Component<Props, Istate> {
         super(props);
 
         this.state = {
-            added: false
+            added: false,
+            loading: true
         };
     }
 
-    public componentDidMount() {
+    public async componentDidMount() {
         if(this.props.match.params.id) {
             const id: number = parseInt(this.props.match.params.id, 10);
-            const product = products.filter(product => product.id === id)[0];
-
-            this.setState({ product });
+            const product = await getProduct(id);
+            if (product !== null) {
+                this.setState({ product, loading: false });
+            }
         }
     }
 
@@ -46,8 +49,9 @@ class ProductPage extends React.Component<Props, Istate> {
                 {/*prompt component invokes a confirmation dialog during navigation when certain condition is met*/}
                 <Prompt when={!this.state.added} message={this.navAwayMessage}/>
                 {
-                    product ? (
-                        <Product product={product}
+                    product || this.state.loading ? (
+                        <Product loading={this.state.loading}
+                                 product={product}
                                  inBasket={this.state.added}
                                  onAddToBasket={this.handleClick}/>
                     ) : ( <p>Product not found</p>)
