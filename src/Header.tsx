@@ -15,7 +15,7 @@ const Header: React.SFC<RouteComponentProps> = (props) => {
     }, []);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.currentTarget.value)
+        setSearch(e.currentTarget.value);
     };
 
     // adds the search state value to the path query string when Enter key is pressed
