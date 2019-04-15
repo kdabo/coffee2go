@@ -37,7 +37,6 @@ class Tabs extends React.Component<{}, Istate> {
                         : props.initialActive
                         ? props.name : "";
                     const handleTabClick = (e: React.MouseEvent<HTMLLIElement>) => {
-                        console.log(e)
                         if (context.handleTabClick) {
                             context.handleTabClick(props.name, props.children)
                         }
