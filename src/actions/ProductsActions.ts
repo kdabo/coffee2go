@@ -1,8 +1,11 @@
 import { ActionCreator, AnyAction, Dispatch } from "redux";
 import { ThunkAction} from "redux-thunk";
-import { getProducts as getProductsFromAPI, getProduct as getProductFromAPI } from "./ProductsData";
-import { IProductsGetAllAction, IProductsGetSingleAction, IProductsLoadingAction, IProductsState, ProductsActionTypes} from "./ProductsTypes";
-import {async} from "q";
+import { getProducts as getProductsFromAPI, getProduct as getProductFromAPI } from "../ProductsData";
+import { IProductsGetAllAction, IProductsLoadingAction, IProductsState, ProductsActionTypes} from "../ProductsTypes";
+
+
+const API_URL = "https://api.yelp.com/v3/businesses/search";
+
 
 export const getProducts: ActionCreator<ThunkAction<Promise<AnyAction>, IProductsState, null, IProductsGetAllAction>> = () => {
     return async (dispatch: Dispatch) => {

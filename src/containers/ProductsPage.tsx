@@ -4,7 +4,7 @@ import "url-search-params-polyfill";
 import { connect } from "react-redux";
 
 import { IApplicationState } from "./Store";
-import { getProducts } from "./ProductsActions";
+import { getProducts } from "./actions/ProductsActions";
 import { IProduct } from "./ProductsData";
 import ProductsList from "./ProductsList"
 

@@ -3,8 +3,8 @@ import {RouteComponentProps, Prompt } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { IProduct } from "./ProductsData";
-import { addToBasket} from "./BasketActions";
-import { getProduct } from "./ProductsActions";
+import { addToBasket} from "./actions/BasketActions";
+import { getProduct } from "./actions/ProductsActions";
 import { IApplicationState} from "./Store";
 
 import Product from "./Product";

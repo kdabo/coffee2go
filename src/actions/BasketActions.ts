@@ -1,5 +1,5 @@
-import {BasketActionTypes, IBasketAdd} from "./BasketTypes";
-import {IProduct} from "./ProductsData";
+import {BasketActionTypes, IBasketAdd} from "../BasketTypes";
+import {IProduct} from "../ProductsData";
 
 export const addToBasket = (product: IProduct): IBasketAdd => {
     return {

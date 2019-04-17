@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 import { productsReducer } from "./ProductsReducer";
 import { IProductsState } from "./ProductsTypes";
-import { basketReducer } from "./BasketReducer";
+import { basketReducer } from "./reducers/BasketReducer";
 import { IBasketState } from "./BasketTypes";
 
 export interface IApplicationState {
