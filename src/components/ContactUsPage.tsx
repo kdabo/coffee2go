@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ContactUs from "./ContactUs";
-import {ISubmitResult, IValues} from "./Form";
+import {ISubmitResult, IValues} from "../containers/Form";
 
 const wait = (ms :number): Promise<void> => {
     return new Promise(resolve => setTimeout(resolve, ms));

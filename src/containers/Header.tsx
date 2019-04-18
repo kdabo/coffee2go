@@ -3,8 +3,8 @@ import { NavLink, RouteComponentProps, withRouter } from "react-router-dom";
 import "url-search-params-polyfill";
 import { connect } from "react-redux";
 
-import BasketSummary from "./BasketSummary";
-import { IApplicationState } from "./Store";
+import BasketSummary from "../components/BasketSummary";
+import { IApplicationState } from "../reducers/Store";
 
 import logo from "./logo.svg";
 

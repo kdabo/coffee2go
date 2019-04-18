@@ -2,12 +2,12 @@ import * as React from 'react';
 import {RouteComponentProps, Prompt } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { IProduct } from "./ProductsData";
-import { addToBasket} from "./actions/BasketActions";
-import { getProduct } from "./actions/ProductsActions";
-import { IApplicationState} from "./Store";
+import { IProduct } from "../ProductsData";
+import { addToBasket} from "../actions/BasketActions";
+import { getProduct } from "../actions/ProductsActions";
+import { IApplicationState} from "../reducers/Store";
 
-import Product from "./Product";
+import Product from "../components/Product";
 
 // ideally the type should be number, but in this case RouteComponentProps only allows to have Route parameters of type string or undefined
 

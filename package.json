@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "axios": "^0.18.0",
+    "connected-react-router": "^6.4.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^7.0.2",
@@ -10,8 +11,13 @@
     "react-scripts": "2.1.8",
     "react-transition-group": "^2.7.1",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0",
-    "url-search-params-polyfill": "^5.1.0"
+    "typesafe-actions": "^4.0.0",
+    "url-search-params-polyfill": "^5.1.0",
+    "yelp-fusion": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

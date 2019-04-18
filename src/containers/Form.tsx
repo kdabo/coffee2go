@@ -1,5 +1,4 @@
 import * as React from "react";
-import {async} from "q";
 
 export interface IValues {
     [key: string]: any;

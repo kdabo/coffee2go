@@ -3,9 +3,9 @@ import {BrowserRouter as Router, Route, Switch, Redirect, RouteComponentProps} f
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Suspense } from 'react';
 
-import ProductsPage from "./ProductsPage";
-import Header from  "./Header";
-import ProductPage from "./ProductPage";
+import ProductsPage from "../containers/ProductsPage";
+import Header from  "../containers/Header";
+import ProductPage from "../containers/ProductPage";
 import NotFoundPage from "./NotFoundPage";
 import LoginPage from "./LoginPage";
 import ContactUsPage from "./ContactUsPage";

@@ -1,11 +1,8 @@
 import { ActionCreator, AnyAction, Dispatch } from "redux";
+import { action } from 'typesafe-actions';
 import { ThunkAction} from "redux-thunk";
-import { getProducts as getProductsFromAPI, getProduct as getProductFromAPI } from "../ProductsData";
-import { IProductsGetAllAction, IProductsLoadingAction, IProductsState, ProductsActionTypes} from "../ProductsTypes";
-
-
-const API_URL = "https://api.yelp.com/v3/businesses/search";
-
+import {getProducts as getProductsFromAPI, getProduct as getProductFromAPI, IProduct} from "../ProductsData";
+import { IProductsGetAllAction, IProductsLoadingAction, IProductsState, ProductsActionTypes} from "../types/ProductsTypes";
 
 export const getProducts: ActionCreator<ThunkAction<Promise<AnyAction>, IProductsState, null, IProductsGetAllAction>> = () => {
     return async (dispatch: Dispatch) => {
@@ -34,3 +31,6 @@ const loading: ActionCreator<IProductsLoadingAction> = () => ({
 });
 
 
+
+export const fetchProducts = (products: IProduct[]) => action(ProductsActionTypes.GETALL, products);
+export const fetchError = (message: string) => action(ProductsActionTypes.FETCH_ERROR, message);

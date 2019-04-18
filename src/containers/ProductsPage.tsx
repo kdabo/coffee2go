@@ -3,10 +3,10 @@ import { Link, RouteComponentProps } from "react-router-dom";
 import "url-search-params-polyfill";
 import { connect } from "react-redux";
 
-import { IApplicationState } from "./Store";
-import { getProducts } from "./actions/ProductsActions";
-import { IProduct } from "./ProductsData";
-import ProductsList from "./ProductsList"
+import { IApplicationState } from "../reducers/Store";
+import { getProducts } from "../actions/ProductsActions";
+import { IProduct } from "../ProductsData";
+import ProductsList from "../components/ProductsList"
 
 interface IProps extends RouteComponentProps {
     getProducts: typeof getProducts;

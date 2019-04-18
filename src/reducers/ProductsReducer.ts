@@ -1,5 +1,5 @@
 import { Reducer } from "redux"; // importing reducer type
-import { IProductsState, ProductsActions, ProductsActionTypes } from "./ProductsTypes";
+import { IProductsState, ProductsActions, ProductsActionTypes } from "../types/ProductsTypes";
 
 const initialProductState: IProductsState = {
     products: [],
@@ -29,7 +29,6 @@ export const productsReducer: Reducer<IProductsState, ProductsActions> = (state 
                 productsLoading: true
             }
         }
-
     }
     return state;
 };
