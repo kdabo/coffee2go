@@ -4,6 +4,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "connected-react-router": "^6.4.0",
+    "express": "^4.16.4",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^7.0.2",
@@ -20,7 +21,7 @@
     "yelp-fusion": "^3.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"node ./src/server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -43,6 +44,9 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/react-transition-group": "^2.0.16",
     "@types/redux-thunk": "^2.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "concurrently": "^4.1.0",
     "tslint": "^5.14.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.6.0",

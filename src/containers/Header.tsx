@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import BasketSummary from "../components/BasketSummary";
 import { IApplicationState } from "../reducers/Store";
 
-import logo from "./logo.svg";
+import logo from "../logo.svg";
 
 interface IProps extends RouteComponentProps {
     basketCount: number
