@@ -2,7 +2,7 @@ import { Reducer } from "redux";
 import { BasketActions, BasketActionTypes, IBasketState } from "../types/BasketTypes";
 
 const initialBasketState: IBasketState = {
-  products: []
+  locations: []
 };
 
 export const basketReducer: Reducer<IBasketState, BasketActions> = (state = initialBasketState, action) => {
@@ -10,7 +10,7 @@ export const basketReducer: Reducer<IBasketState, BasketActions> = (state = init
         case BasketActionTypes.ADD: {
             return {
                 ...state,
-                products: state.products.concat(action.product)
+                locations: state.locations.concat(action.location)
             };
         }
     }

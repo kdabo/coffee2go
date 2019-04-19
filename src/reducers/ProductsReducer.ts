@@ -1,32 +1,46 @@
 import { Reducer } from "redux"; // importing reducer type
-import { IProductsState, ProductsActions, ProductsActionTypes } from "../types/ProductsTypes";
+import { ILocationState, LocationssActionTypes } from "../types/LocationsTypes";
 
-const initialProductState: IProductsState = {
-    products: [],
-    currentProduct: null,
-    productsLoading: false,
+const initialLocationState: ILocationState = {
+    locations: [],
+    currentLocation: null,
+    locationsLoading: false,
+    errors: undefined,
 };
 
-export const productsReducer: Reducer<IProductsState, ProductsActions> = (state = initialProductState, action) => {
+export const locationsReducer: Reducer<ILocationState> = (state = initialLocationState, action) => {
     switch (action.type) {
-        case ProductsActionTypes.GETSINGLE: {
+        case LocationssActionTypes.GETSINGLE: {
             return {
                 ...state,
-                currentProduct: action.product,
-                productsLoading: false
+                currentLocation: action.location,
+                locationsLoading: false
             }
         }
-        case ProductsActionTypes.GETALL: {
+        case LocationssActionTypes.FETCH_LOCATION: {
             return {
                 ...state,
-                products: action.products,
-                productsLoading: false
+                locationsLoading: false
             }
         }
-        case ProductsActionTypes.LOADING: {
+        case LocationssActionTypes.FETCH_SUCCESS: {
             return {
                 ...state,
-                productsLoading: true
+                locations: action.locations,
+                locationsLoading: false
+            }
+        }
+        case LocationssActionTypes.FETCH_ERROR: {
+            return {
+                ...state,
+                errors: action.payload,
+                locationsLoading: false
+            }
+        }
+        case LocationssActionTypes.LOADING: {
+            return {
+                ...state,
+                locationsLoading: true
             }
         }
     }

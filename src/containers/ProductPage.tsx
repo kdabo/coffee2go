@@ -2,7 +2,7 @@ import * as React from 'react';
 import {RouteComponentProps, Prompt } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { IProduct } from "../ProductsData";
+import { IProduct } from "../types/ProductsData";
 import { addToBasket} from "../actions/BasketActions";
 import { getProduct } from "../actions/ProductsActions";
 import { IApplicationState} from "../reducers/Store";

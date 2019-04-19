@@ -71,7 +71,7 @@ class Header extends React.Component<IProps, IState> {
 
 const mapStateToProps = (store: IApplicationState) => {
     return {
-        basketCount: store.basket.products.length
+        basketCount: store.basket.locations.length
     }
 }
 

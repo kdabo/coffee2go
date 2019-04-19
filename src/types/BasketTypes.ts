@@ -1,16 +1,16 @@
-import { IProduct } from "../ProductsData";
+import {ILocation} from "./LocationTypes";
 
 export enum BasketActionTypes {
     ADD = "BASKET/ADD"
 }
 
 export interface IBasketState {
-    readonly products: IProduct[]
+    readonly locations: ILocation[]
 }
 
 export interface IBasketAdd {
     type: BasketActionTypes.ADD,
-    product: IProduct
+    location: ILocation
 }
 
 export type BasketActions = IBasketAdd;

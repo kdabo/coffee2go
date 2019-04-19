@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IProduct} from "../ProductsData";
+import {IProduct} from "../types/ProductsData";
 
 import Tabs from "./Tabs";
 import withLoader from "../hoc/withLoader";
