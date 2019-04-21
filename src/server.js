@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 
 const API_ENDPOINT = 'https://api.yelp.com/v3/businesses';
-const API_KEY = 'WtZTTCqKngKaQR0kZaCRm6ug6gzuEKgMmMBpQqJmk0-e4cSmiaR6xk2mY_-F6M6Ud7KEG2k1l0kiPUCZ1TgTKhfpGfcE6noUu8_rMMkXbcRZKtdSlEcsz8aUM9a2XHYx';
+const API_KEY = '';
 
 const port = 4000;
 const app = express();
