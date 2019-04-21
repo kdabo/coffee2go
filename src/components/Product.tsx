@@ -71,28 +71,25 @@ const Product: React.SFC<IProps> = props => {
                 </Tabs.Tab>
                 <Tabs.Tab name="Reviews"
                           heading={() => <b>Reviews</b>}>
-                    <div>
-                        <ul className="product-reviews">
-                            {
-                                location.reviews.map(review => (
-                                    <li key={review.reviewer} className="product-reviews-item">
-                                        <i>"{review.comment}"</i>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
+                    {/*<div>*/}
+                        {/*<ul className="product-reviews">*/}
+                            {/*{*/}
+                                {/*location.reviews.map(review => (*/}
+                                    {/*<li key={review.reviewer} className="product-reviews-item">*/}
+                                        {/*<i>"{review.comment}"</i>*/}
+                                    {/*</li>*/}
+                                {/*))*/}
+                            {/*}*/}
+                        {/*</ul>*/}
+                    {/*</div>*/}
                 </Tabs.Tab>
             </Tabs>
 
-            {/*<p className="product-price">*/}
-                {/*{*/}
-                    {/*new Intl.NumberFormat("en-US", {*/}
-                        {/*currency: "USD",*/}
-                        {/*style: "currency"*/}
-                    {/*}).format(location.price)*/}
-                {/*}*/}
-            {/*</p>*/}
+            <p className="product-price">
+                {
+                   location.price
+                }
+            </p>
             {!props.inBasket && (<button onClick={handleAddClick}>Add to basket</button>)}
 
             <div className="like-container">
