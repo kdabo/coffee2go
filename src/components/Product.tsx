@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {IProduct} from "../types/ProductsData";
 
 import Tabs from "./Tabs";
 import withLoader from "../hoc/withLoader";
+import {ILocation} from "../types/LocationTypes";
 
 interface IProps {
-    product?: IProduct;
+    location?: ILocation;
     inBasket: boolean;
     onAddToBasket: () => void;
 }
@@ -46,9 +46,9 @@ const Product: React.SFC<IProps> = props => {
         (action: ILikeAction) => void
         ] = React.useReducer(reducer, initialLikeState);
 
-    const product = props.product;
+    const location = props.location;
 
-    if (!product) {
+    if (!location) {
         return null;
     }
 
@@ -62,19 +62,19 @@ const Product: React.SFC<IProps> = props => {
 
     return (
         <React.Fragment>
-            <h1>{product.name}</h1>
+            <h1>{location.name}</h1>
             <Tabs>
                 <Tabs.Tab name="Description"
                           initialActive={true}
                           heading={() => <b>Description</b>}>
-                    <p>{product.description}</p>
+                    <p>{location.description}</p>
                 </Tabs.Tab>
                 <Tabs.Tab name="Reviews"
                           heading={() => <b>Reviews</b>}>
                     <div>
                         <ul className="product-reviews">
                             {
-                                product.reviews.map(review => (
+                                location.reviews.map(review => (
                                     <li key={review.reviewer} className="product-reviews-item">
                                         <i>"{review.comment}"</i>
                                     </li>
@@ -85,14 +85,14 @@ const Product: React.SFC<IProps> = props => {
                 </Tabs.Tab>
             </Tabs>
 
-            <p className="product-price">
-                {
-                    new Intl.NumberFormat("en-US", {
-                        currency: "USD",
-                        style: "currency"
-                    }).format(product.price)
-                }
-            </p>
+            {/*<p className="product-price">*/}
+                {/*{*/}
+                    {/*new Intl.NumberFormat("en-US", {*/}
+                        {/*currency: "USD",*/}
+                        {/*style: "currency"*/}
+                    {/*}).format(location.price)*/}
+                {/*}*/}
+            {/*</p>*/}
             {!props.inBasket && (<button onClick={handleAddClick}>Add to basket</button>)}
 
             <div className="like-container">

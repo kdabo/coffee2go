@@ -2,7 +2,11 @@ export interface ILocation {
     id: number;
     name: string;
     description: string;
-    reviews:  IReview[]
+    reviews:  IReview[];
+    pathname: string;
+    search: string;
+    state: object;
+    hash: string;
 }
 
 export interface IReview {

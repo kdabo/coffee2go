@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import { IApplicationState } from "../reducers/Store";
 import { ILocation } from "../types/LocationTypes";
 import ProductsList from "../components/ProductsList"
-import {fetchLocation} from "../actions/LocationsActions";
+import {fetchLocations} from "../actions/LocationsActions";
 
 interface IProps extends RouteComponentProps {
-    fetchLocation: typeof fetchLocation;
+    fetchLocations: typeof fetchLocations;
     loading: boolean;
     locations: ILocation[]
 }
@@ -17,7 +17,7 @@ interface IProps extends RouteComponentProps {
 class ProductsPage extends React.Component<IProps> {
 
     public async componentDidMount(){
-      this.props.fetchLocation();
+      this.props.fetchLocations(this.props.locations);
     }
 
     public render() {
@@ -37,17 +37,14 @@ class ProductsPage extends React.Component<IProps> {
     }
 }
 
-const mapStateToProps = ( { locations }: IApplicationState) => {
-  return {
-      locations: locations.locations,
+const mapStateToProps = ( {locations}: IApplicationState) => {
+    return {
+      locations: locations.locations.businesses,
       locationsLoading: locations.locationsLoading,
-      currentLocation:  null,
+      currentLocation:  locations.currentLocation,
       errors: locations.errors
   }
 };
 
-const mapDispatchToProps = {
-    fetchLocation
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);
+export default connect(mapStateToProps, {fetchLocations})(ProductsPage);

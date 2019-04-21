@@ -1,7 +1,7 @@
 import { ILocation } from "./LocationTypes";
 
 export enum LocationssActionTypes {
-    FETCH_LOCATION = "FETCH_LOCATION",
+    GETALL = "GETALL",
     FETCH_SUCCESS = "FETCH_SUCCESS",
     FETCH_ERROR = "FETCH_ERROR",
     GETSINGLE = "GETSINGLE",
@@ -9,7 +9,7 @@ export enum LocationssActionTypes {
 }
 
 export interface ILocationsGetAllAction {
-    type: LocationssActionTypes.FETCH_LOCATION,
+    type: LocationssActionTypes.GETALL,
     locations: ILocation[]
 }
 
@@ -32,9 +32,13 @@ export interface ILocationErrorAction {
 
 export type LocationssAction = ILocationsGetAllAction | ILocationLoadingAction | ILocationGetSingleAction | ILocationSuccessAction | ILocationErrorAction;
 
+export interface IBusinesses {
+    businesses: ILocation[];
+}
+
 export interface ILocationState {
-    readonly locations: ILocation[];
+    readonly locations: IBusinesses;
     readonly locationsLoading: boolean;
-    readonly currentLocation: ILocation | null;
+    readonly currentLocation: ILocation;
     readonly errors?: string
 }

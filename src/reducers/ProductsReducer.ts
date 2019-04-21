@@ -1,9 +1,10 @@
 import { Reducer } from "redux"; // importing reducer type
-import { ILocationState, LocationssActionTypes } from "../types/LocationsTypes";
+import {ILocationState, IBusinesses, LocationssActionTypes} from "../types/LocationsTypes";
+import {ILocation} from "../types/LocationTypes";
 
 const initialLocationState: ILocationState = {
-    locations: [],
-    currentLocation: null,
+    locations: <IBusinesses>{},
+    currentLocation: <ILocation>{},
     locationsLoading: false,
     errors: undefined,
 };
@@ -17,16 +18,18 @@ export const locationsReducer: Reducer<ILocationState> = (state = initialLocatio
                 locationsLoading: false
             }
         }
-        case LocationssActionTypes.FETCH_LOCATION: {
+        case LocationssActionTypes.GETALL: {
+            console.log("reducer", {...state})
             return {
                 ...state,
                 locationsLoading: false
             }
         }
         case LocationssActionTypes.FETCH_SUCCESS: {
+            console.log("reducer", action.payload)
             return {
                 ...state,
-                locations: action.locations,
+                locations: action.payload,
                 locationsLoading: false
             }
         }

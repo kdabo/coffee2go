@@ -1,31 +1,22 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { LocationssActionTypes } from "../types/LocationsTypes";
 import { fetchError, fetchSuccess } from '../actions/LocationsActions';
-import {  fetchPlaces } from '../utils/api'
+import { fetchPlaces} from '../utils/api'
 
 function* handleFetch() {
     try {
         const res = yield call(fetchPlaces);
-
-        if (res.error) {
-            yield put(fetchError(res.error))
-        } else {
-            yield put(fetchSuccess(res))
-        }
-    }
-    catch (err) {
-        if (err instanceof Error) {
-            yield put(fetchError(err.stack!))
-        } else {
-            yield put(fetchError('An unknown error occured.'))
-        }
+        yield put(fetchSuccess(res));
+    } catch (error) {
+        yield put({type: LocationssActionTypes.FETCH_ERROR, error})
     }
 }
 
-function* watchFetchRequest() {
-    yield takeEvery(LocationssActionTypes.FETCH_LOCATION, handleFetch)
+
+function* watchHandleData() {
+    yield takeEvery(LocationssActionTypes.GETALL, handleFetch)
 }
 
 export function* productsSaga() {
-    yield all([fork(watchFetchRequest)])
+    yield all([fork(watchHandleData)])
 }

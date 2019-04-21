@@ -26,7 +26,7 @@ const Routes: React.SFC<RouteComponentProps> = (props) => {
                         <Switch>
                         <Redirect exact={true} from="/" to="/products"/>
                         <Route path="/products" exact={true} component={ProductsPage} />
-                        <Route path="/products/:id" component={ProductPage} />
+                        {/*<Route path="/products/:id" component={ProductPage} />*/}
                         <Route path="/contact" component={ContactUsPage} />
                         <Route path="/admin">
                             { loggedIn ? (

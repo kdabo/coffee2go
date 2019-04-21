@@ -10,6 +10,11 @@ interface IProps {
 
 const ProductsList: React.SFC<IProps> = props => {
     const search = props.search;
+
+    if(!props.locations) {
+        return <div>Loading...</div>
+    }
+
     return (
         <ul className="product-list">
             {props.locations.map(location => {
