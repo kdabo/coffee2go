@@ -5,6 +5,7 @@ export enum LocationssActionTypes {
     FETCH_SUCCESS = "FETCH_SUCCESS",
     FETCH_ERROR = "FETCH_ERROR",
     GETSINGLE = "GETSINGLE",
+    FETCH_SINGLE_SUCCESS = "FETCH_SINGLE_SUCCESS",
     LOADING = "LOADING",
 }
 
@@ -26,11 +27,15 @@ export interface ILocationSuccessAction {
     type: LocationssActionTypes.FETCH_SUCCESS,
 }
 
+export interface ILocationSingleSuccessAction {
+    type: LocationssActionTypes.FETCH_SINGLE_SUCCESS
+}
+
 export interface ILocationErrorAction {
     type: LocationssActionTypes.FETCH_ERROR,
 }
 
-export type LocationssAction = ILocationsGetAllAction | ILocationLoadingAction | ILocationGetSingleAction | ILocationSuccessAction | ILocationErrorAction;
+export type LocationssAction = ILocationsGetAllAction | ILocationLoadingAction | ILocationGetSingleAction | ILocationSuccessAction | ILocationErrorAction | ILocationSingleSuccessAction;
 
 export interface IBusinesses {
     businesses: ILocation[];

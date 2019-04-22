@@ -22,7 +22,7 @@ interface IProps extends RouteComponentProps<{id: string}> {
 }
 
 class ProductPage extends React.Component<IProps> {
-    constructor(props: IProps) {
+    constructor(props: any) {
         super(props);
 
         this.handleAddClick = this.handleAddClick.bind(this)
@@ -30,8 +30,8 @@ class ProductPage extends React.Component<IProps> {
 
     public componentDidMount() {
         if(this.props.match.params.id) {
-            const id: number = parseInt(this.props.match.params.id, 10);
-            this.props.fetchLocation(id.toString());
+            const business_id: string = this.props.match.params.id;
+            this.props.fetchLocation(business_id);
         }
     }
 
@@ -64,7 +64,7 @@ class ProductPage extends React.Component<IProps> {
 }
 
 const mapStateToProps = (store: IApplicationState) => {
-    console.log("store", store);
+    console.log("Product Page store", store);
     return {
         added: store.basket.locations.some(p => store.locations.currentLocation ? p.id === store.locations.currentLocation.id : false),
         basketProducts: store.basket.locations,
@@ -76,7 +76,7 @@ const mapStateToProps = (store: IApplicationState) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         addToBasket: (location: ILocation) => dispatch(addToBasket(location)),
-        fetchLocation: (id: string) => dispatch(fetchLocation(id))
+        fetchLocation: (business_id: string) => dispatch(fetchLocation(business_id)),
     }
 };
 

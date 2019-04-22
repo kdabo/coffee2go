@@ -1,8 +1,16 @@
 export interface ILocation {
     id: number;
     name: string;
+    address1: string;
+    city: string;
+    hours: IHours;
+    display_phone: string;
+    location: {
+       address1: string
+    };
     price: string;
-    description: string;
+    review_count: number;
+    rating: number;
     reviews:  IReview[];
     pathname: string;
     search: string;
@@ -10,12 +18,13 @@ export interface ILocation {
     hash: string;
 }
 
+export interface IHours {
+    open: [],
+    hours_type: string,
+    is_open_now: boolean
+}
+
 export interface IReview {
     comment: string;
     reviewer: string;
 }
-
-// export const getProduct = async (id: number): Promise<IProduct | null> => {
-//     const  foundProducts = products.filter(customer => customer.id === id);
-//     return foundProducts.length === 0 ? null : foundProducts[0]
-// };

@@ -1,4 +1,4 @@
-import { Reducer } from "redux"; // importing reducer type
+import { Reducer } from "redux";
 import {ILocationState, IBusinesses, LocationssActionTypes} from "../types/LocationsTypes";
 import {ILocation} from "../types/LocationTypes";
 
@@ -11,22 +11,21 @@ const initialLocationState: ILocationState = {
 
 export const locationsReducer: Reducer<ILocationState> = (state = initialLocationState, action) => {
     switch (action.type) {
-        case LocationssActionTypes.GETSINGLE: {
+        case LocationssActionTypes.FETCH_SINGLE_SUCCESS: {
+            console.log("reducer", action.payload)
             return {
                 ...state,
-                currentLocation: action.location,
+                currentLocation: action.payload,
                 locationsLoading: false
             }
         }
         case LocationssActionTypes.GETALL: {
-            console.log("reducer", {...state})
             return {
                 ...state,
                 locationsLoading: false
             }
         }
         case LocationssActionTypes.FETCH_SUCCESS: {
-            console.log("reducer", action.payload)
             return {
                 ...state,
                 locations: action.payload,

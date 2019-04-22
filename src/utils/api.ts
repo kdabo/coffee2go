@@ -11,11 +11,13 @@ export async function fetchPlaces() {
     return await response.data;
 }
 
-export async function fetchPlace(id: number) {
+export async function fetchPlace(id: string) {
+
     const requestConfig = {
         method:'get',
         baseURL: `${API_ENDPOINT}/api/locations/${id}`,
     };
     const response = await axios(requestConfig);
+    console.log("res api", response)
     return await response.data;
 }

@@ -48,6 +48,7 @@ const Product: React.SFC<IProps> = props => {
 
     const location = props.location;
 
+
     if (!location) {
         return null;
     }
@@ -67,12 +68,29 @@ const Product: React.SFC<IProps> = props => {
                 <Tabs.Tab name="Description"
                           initialActive={true}
                           heading={() => <b>Description</b>}>
-                    <p>{location.description}</p>
+                    <p className="product-price">
+                        {
+                            location && location.address1
+                        }
+                    </p>
+                    <p className="product-price">
+                        Accepts
+                        {
+                            location.price
+                        }
+                    </p>
+                    <p className="product-price">
+                        {
+                            location.display_phone
+                        }
+                    </p>
+                    { location.rating }
                 </Tabs.Tab>
                 <Tabs.Tab name="Reviews"
                           heading={() => <b>Reviews</b>}>
-                    {/*<div>*/}
-                        {/*<ul className="product-reviews">*/}
+                    <div>
+                        <ul className="product-reviews">
+                            { location.review_count}
                             {/*{*/}
                                 {/*location.reviews.map(review => (*/}
                                     {/*<li key={review.reviewer} className="product-reviews-item">*/}
@@ -80,16 +98,11 @@ const Product: React.SFC<IProps> = props => {
                                     {/*</li>*/}
                                 {/*))*/}
                             {/*}*/}
-                        {/*</ul>*/}
-                    {/*</div>*/}
+                        </ul>
+                    </div>
                 </Tabs.Tab>
             </Tabs>
 
-            <p className="product-price">
-                {
-                   location.price
-                }
-            </p>
             {!props.inBasket && (<button onClick={handleAddClick}>Add to basket</button>)}
 
             <div className="like-container">
