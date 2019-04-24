@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "@types/styled-components": "^4.1.14",
+    "@types/styled-system": "^4.1.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "connected-react-router": "^6.4.0",
@@ -19,6 +20,7 @@
     "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.2.0",
+    "styled-system": "^4.1.0",
     "typesafe-actions": "^4.0.0",
     "url-search-params-polyfill": "^5.1.0",
     "yelp-fusion": "^3.0.0"

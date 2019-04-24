@@ -13,7 +13,6 @@ function* handleFetch() {
 }
 
 function* handleSelect(action: ReturnType<typeof fetchLocation>) {
-    console.log("action saga", action)
     try {
         const res = yield call(fetchPlace, action.payload);
         yield put(fetchLocationSuccess(res));

@@ -1,12 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -33,14 +24,6 @@ ul {
     padding:  5px;
 }
 
-.header {
-    text-align: center;
-    background-color: #222222;
-    height: 160px;
-    padding: 20px;
-    color: white;
-}
-
 .header-logo {
     animation: header-logo-spin infinite 20s linear;
     height: 80px;
@@ -61,24 +44,20 @@ ul {
 }
 
 .header-link {
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 5px;
 }
 
 .header-link-active {
-    color: white;
-    border-bottom: #ebebeb solid 2px;
+    color: black;
+    border-bottom: pink solid 2px;
 }
 
 .product-list-item a {
     text-decoration: none;
 }
 
-.search-container {
-    text-align: right;
-    margin-bottom: -25px;
-}
 
 .admin-sections {
     list-style: none;
