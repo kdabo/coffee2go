@@ -1,0 +1,50 @@
+import 'styled-components'
+
+declare module 'styled-components' {
+    export interface DefaultTheme {
+        borderRadius: string,
+        boxShadow: string,
+
+        colors: {
+            black: string
+            white: string
+
+            gray30: string,
+            gray20: string,
+            gray10: string,
+            gray5: string,
+
+            nude30: string,
+            nude20: string,
+            nude10: string,
+            nude5: string,
+
+            red30: string,
+            red20: string,
+            red10: string,
+            red5: string,
+
+            yellow30: string,
+            yellow20: string,
+            yellow10: string,
+            yellow5: string,
+
+            green30: string,
+            green20: string,
+            green10: string,
+            green5: string,
+
+            darkBlue30: string,
+            darkBlue20: string,
+            darkBlue10: string,
+            darkBlue5: string,
+
+            lightBlue30: string,
+            lightBlue20: string,
+            lightBlue10: string,
+            lightBlue5: string,
+        },
+
+        space: number[],
+    }
+}

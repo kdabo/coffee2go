@@ -17,7 +17,7 @@ const Routes: React.SFC<RouteComponentProps> = (props) => {
     const [loggedIn] = React.useState(true);
 
     return (
-            <div>
+            <>
                 <Header />
                 <TransitionGroup>
                     <CSSTransition key={props.location.key}
@@ -38,7 +38,7 @@ const Routes: React.SFC<RouteComponentProps> = (props) => {
                         </Switch>
                     </CSSTransition>
                 </TransitionGroup>
-            </div>
+            </>
     )
 };
 

@@ -8,8 +8,8 @@ import configureStore from "./configureStore";
 import Routes from "./components/Routes";
 
 import './index.css';
-import {GlobalStyle} from "./GlobalStyle";
-import theme from './theme'
+import {GlobalStyle} from "./styles/GlobalStyle";
+import theme from './styles/theme'
 import { ThemeProvider } from 'styled-components'
 
 interface IProps {
