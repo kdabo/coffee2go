@@ -45,6 +45,34 @@ declare module 'styled-components' {
             lightBlue5: string,
         },
 
+        typography: {
+            fontFamilyPrimary: string,
+            fontFamilySecondary: string,
+            lineHeight: string,
+            h1: string,
+            h2: string,
+            h3: string,
+            p: string,
+            span: string
+            // h1: string,
+            // h2: string,
+            // h3: string,
+            // p: string,
+            // label: string,
+            // span: string,
+            // quote: string,
+            // anchor: string
+        }
+
         space: number[],
+
+        breakpoints: string[],
+
+        mediaQueries: {
+            small: string,
+            medium: string,
+            large: string,
+            extraLarge: string,
+        }
     }
 }

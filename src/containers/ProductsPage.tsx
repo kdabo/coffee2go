@@ -27,7 +27,7 @@ class ProductsPage extends React.Component<IProps> {
         return (
             <div className='page-container'>
                 <p>
-                    Welcome to React Shop where you can get all your tools for React JS
+                    Best coffee in the neighbourhood
                 </p>
                 <ProductsList locations={this.props.locations}
                               loading={this.props.loading}

@@ -8,10 +8,12 @@ import {IApplicationState} from "../reducers/Store";
 
 import logo from "../logo.svg";
 import styled from "styled-components";
-import {color, width, space, boxShadow, borderRadius, fontSize, fontWeight } from 'styled-system';
+import className from 'styled-components'
+import {color, width, space, boxShadow, borderRadius, fontSize, fontWeight} from 'styled-system';
 import theme from "../styles/theme";
 
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
@@ -21,6 +23,7 @@ interface IProps extends RouteComponentProps {
 
 interface IState {
     search: string;
+    showNavigation: boolean
 }
 
 interface INavigationHeader {
@@ -31,12 +34,14 @@ interface INavigationHeader {
 interface ILogo {
     mt: number
     ml: number
+    mr: number
 }
 
 interface ISearchContainer {
     mt: number;
     pl: number;
-    pr: number
+    pr: number;
+    mr: number;
     boxShadow: string;
     borderRadius: string;
     fontSize: number;
@@ -44,65 +49,105 @@ interface ISearchContainer {
 }
 
 interface ISearchWrapper {
-    width: number;
+    width: number[];
 }
 
-interface INavigation {
-    mt: number
-    pr: number
+interface INavigationLink {
     fontSize: number
+    color: string;
+    p: number;
 }
 
-const NavigationHeader = styled.div<INavigationHeader>`
+interface INavigationContainer {
+    mt: number;
+    mr: number;
+}
+
+interface INavigationButton {
+    mt: number;
+    mr: number;
+}
+
+const NavigationHeader = styled.div < INavigationHeader > `
     ${color};
     ${width};
     position: sticky;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: unset;
     align-items: center;
     top: 0px;
     background-color: white;
-    height: 80px;
+    
+     ${theme.mediaQueries.small} {
+       flex-wrap: wrap;
+    }
+    
 `;
 
-const Logo = styled.img<ILogo>`
-    height: 60px;
+const Logo = styled.img < ILogo > `
+    height: 55px;
     ${space};
 `;
 
-const SearchWrapper = styled.div<ISearchWrapper>`
+const SearchWrapper = styled.div < ISearchWrapper > `
     ${width};
+    position: relative;
 `;
 
-const SearchIconWrapper = styled.div<{}>`
+const SearchIconWrapper = styled.div < {} > `
     position: absolute;
-    top: 40px;
-    left: 442px;
+    top: 28px;
+    left: 25px;
 `;
 
-const SearchContainer = styled.input<ISearchContainer>`
+const SearchContainer = styled.input <ISearchContainer> `
     ${space};
     ${width};
     ${boxShadow};
     ${borderRadius};
     ${fontSize};
     ${fontWeight};
-    height: 48px;
+    height: 45px;
     border: 1px solid white;
 `;
 
-const Navigation = styled.nav<INavigation>`
-    ${space};
-    ${fontSize};
-    text-decoration: none;
+const NavigationContainer = styled.nav <INavigationContainer>`
+    ${space}; 
+    display: none;
+    
+     ${theme.mediaQueries.medium} {
+        margin-left: auto;
+        display: flex;
+    }
 `;
 
-const NavigationLink = styled.div`
-    color: black;
+const activeLinkClassName = 'header-link-active';
+const NavigationLink = styled(NavLink)<INavigationLink> `
+    ${fontSize};
+    ${color};
+    ${space};
     text-decoration: none;
-    padding: 5px;
-    display: inline-flex;
+    
+    &.${activeLinkClassName} {
+      border-bottom: ${theme.colors.darkBlue30} solid 2px;
+      color: ${theme.colors.gray30};
+    } 
 `;
+
+
+const activeMenuHeader = 'active-menu-header';
+
+const NavigationButton = styled.div<INavigationButton>`
+     margin-left: auto;
+     cursor: pointer;
+     ${space};
+     
+     
+     ${theme.mediaQueries.medium} {
+       display:none;
+    }
+`;
+
 
 class Header extends React.Component<IProps, IState> {
 
@@ -110,7 +155,8 @@ class Header extends React.Component<IProps, IState> {
         super(props);
 
         this.state = {
-            search: ""
+            search: "",
+            showNavigation: false,
         }
     }
 
@@ -130,16 +176,23 @@ class Header extends React.Component<IProps, IState> {
         }
     };
 
+    private handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
+        this.setState({
+            showNavigation: !this.state.showNavigation
+        })
+    }
+
     public render() {
         return (
             <NavigationHeader color={theme.colors.black}
-                              width={[ 1 ]}>
-                <Logo src={logo} alt="logo" mt={3} ml={3} />
-                <SearchWrapper width={460}>
+                              width={[1]}>
+                <Logo src={logo} alt="logo" mt={3} ml={3} mr={3}/>
+                <SearchWrapper width={[ 1/2 ]}>
                     <SearchIconWrapper>
-                     <FontAwesomeIcon icon={faSearch} color={"#3D464D"} />
+                        <FontAwesomeIcon icon={faSearch} color={"#3D464D"}/>
                     </SearchIconWrapper>
-                        <SearchContainer
+                    <SearchContainer
+                        mr={3}
                         mt={3}
                         pl={5}
                         pr={2}
@@ -156,23 +209,39 @@ class Header extends React.Component<IProps, IState> {
                     />
                     {/*<BasketSummary count={this.props.basketCount}/>*/}
                 </SearchWrapper>
-                {/*<h1 className="header-title">React Shop</h1>*/}
-                <Navigation mt={3}
-                            pr={3}
-                            fontSize={2}
-                            color={theme.colors.black}>
-                    <NavigationLink>
-                        <NavLink to="/products" className="header-link"
-                                 activeClassName="header-link-active">Cafés</NavLink>
+                <NavigationButton  mr={3}
+                                   mt={3}
+                                   onClick={this.handleClick}
+                >
+                    <FontAwesomeIcon icon={faBars} color={"#3D464D"} size="2x"  />
+                    { this.state.showNavigation ? "Hi" : null }
+                </NavigationButton>
+                <NavigationContainer  mt={3} mr={3}>
+                    <NavigationLink as={NavLink}
+                                    to="/products"
+                                    fontSize={2}
+                                    color={theme.colors.gray30}
+                                    p={2}
+                                    activeClassName={activeLinkClassName}>
+                        Cafés
                     </NavigationLink>
-                    <NavigationLink>
-                        <NavLink to="/contact" className="header-link"
-                                 activeClassName="header-link-active">Contact</NavLink>
+                    <NavigationLink as={NavLink}
+                                    to="/contact"
+                                    fontSize={2}
+                                    color={theme.colors.gray30}
+                                    p={2}
+                                    activeClassName={activeLinkClassName}>
+                        Contact
                     </NavigationLink>
-                        <NavigationLink>
-                        <NavLink to="/admin" className="header-link" activeClassName="header-link-active">Admin</NavLink>
-                        </NavigationLink>
-                </Navigation>
+                    <NavigationLink as={NavLink}
+                                    to="/admin"
+                                    fontSize={2}
+                                    color={theme.colors.gray30}
+                                    p={2}
+                                    activeClassName={activeLinkClassName}>
+                        Admin
+                    </NavigationLink>
+                </NavigationContainer>
             </NavigationHeader>
         )
     }

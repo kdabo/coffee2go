@@ -32,18 +32,6 @@ ul {
     }
 }
 
-
-.header-link {
-    color: black;
-    text-decoration: none;
-    padding: 5px;
-}
-
-.header-link-active {
-    color: black;
-    border-bottom: pink solid 2px;
-}
-
 .product-list-item a {
     text-decoration: none;
 }

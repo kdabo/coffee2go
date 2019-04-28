@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components'
+import {DefaultTheme} from 'styled-components'
 
 const theme: DefaultTheme = {
     borderRadius: '2px',
@@ -44,9 +44,42 @@ const theme: DefaultTheme = {
         lightBlue5: '#dbe8f3',
     },
 
+    typography: {
+        fontFamilyPrimary: "\'Rubik\', sans-serif'",
+        fontFamilySecondary: '\'Roboto Mono\', monospace',
+        lineHeight: '1.5',
+        h1: '1.75rem',
+        h2: '1.5rem',
+        h3: '1.25rem',
+        p: '1rem',
+        span: '0.75rem'
+    },
+
     space: [
         0, 4, 8, 16, 32, 64, 128, 256, 512
-    ]
+    ],
+
+    breakpoints: [
+        '576px',
+        '768px',
+        '992px',
+        '1200px',
+    ],
+
+    mediaQueries: {
+        small: '',
+        medium: '',
+        large: '',
+        extraLarge: ''
+    }
+
+};
+
+theme.mediaQueries = {
+    small: `@media screen and (min-width: ${theme.breakpoints[0]})`,
+    medium: `@media screen and (min-width: ${theme.breakpoints[1]})`,
+    large: `@media screen and (min-width: ${theme.breakpoints[2]})`,
+    extraLarge: `@media screen and (min-width: ${theme.breakpoints[3]})`,
 };
 
 export default theme
