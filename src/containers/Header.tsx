@@ -1,7 +1,9 @@
 import * as React from 'react';
-import {NavLink, RouteComponentProps, withRouter} from "react-router-dom";
+import {Link, NavLink, RouteComponentProps, withRouter} from "react-router-dom";
 import "url-search-params-polyfill";
 import {connect} from "react-redux";
+import Sidebar from "react-sidebar";
+import {isMobile} from 'react-device-detect';
 
 import BasketSummary from "../components/BasketSummary";
 import {IApplicationState} from "../reducers/Store";
@@ -23,7 +25,7 @@ interface IProps extends RouteComponentProps {
 
 interface IState {
     search: string;
-    showNavigation: boolean
+    sidebarOpen: boolean
 }
 
 interface INavigationHeader {
@@ -137,6 +139,7 @@ const NavigationLink = styled(NavLink)<INavigationLink> `
 
 const activeMenuHeader = 'active-menu-header';
 
+
 const NavigationButton = styled.div<INavigationButton>`
      margin-left: auto;
      cursor: pointer;
@@ -156,8 +159,10 @@ class Header extends React.Component<IProps, IState> {
 
         this.state = {
             search: "",
-            showNavigation: false,
-        }
+            sidebarOpen: false,
+        };
+
+        this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     }
 
     public componentDidMount() {
@@ -176,13 +181,31 @@ class Header extends React.Component<IProps, IState> {
         }
     };
 
-    private handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
-        this.setState({
-            showNavigation: !this.state.showNavigation
-        })
-    }
+    private onSetSidebarOpen = (open :boolean) => {
+        this.setState({ sidebarOpen: open });
+    };
+
+    renderMobileNavigationMenu = () => {
+            return <Sidebar pullRight={true}
+                            sidebar= {<NavigationLink as={NavLink}
+                                                      to="/login"
+                                                      fontSize={2}
+                                                      color={theme.colors.gray30}
+                                                      p={2}
+                                                      activeClassName={activeLinkClassName}>Login</NavigationLink>}
+                            open={this.state.sidebarOpen}
+                            onSetOpen={this.onSetSidebarOpen}
+                            styles={{ sidebar: { background: "white" } }} >
+                <NavigationButton  mr={3}
+                                   mt={3}
+                                   onClick={() => this.onSetSidebarOpen(true)}>
+                    <FontAwesomeIcon icon={faBars} color={"#3D464D"} size="2x"  />
+                </NavigationButton>
+            </Sidebar>
+    };
 
     public render() {
+
         return (
             <NavigationHeader color={theme.colors.black}
                               width={[1]}>
@@ -209,39 +232,34 @@ class Header extends React.Component<IProps, IState> {
                     />
                     {/*<BasketSummary count={this.props.basketCount}/>*/}
                 </SearchWrapper>
-                <NavigationButton  mr={3}
-                                   mt={3}
-                                   onClick={this.handleClick}
-                >
-                    <FontAwesomeIcon icon={faBars} color={"#3D464D"} size="2x"  />
-                    { this.state.showNavigation ? "Hi" : null }
-                </NavigationButton>
-                <NavigationContainer  mt={3} mr={3}>
-                    <NavigationLink as={NavLink}
-                                    to="/products"
-                                    fontSize={2}
-                                    color={theme.colors.gray30}
-                                    p={2}
-                                    activeClassName={activeLinkClassName}>
-                        Cafés
-                    </NavigationLink>
-                    <NavigationLink as={NavLink}
-                                    to="/contact"
-                                    fontSize={2}
-                                    color={theme.colors.gray30}
-                                    p={2}
-                                    activeClassName={activeLinkClassName}>
-                        Contact
-                    </NavigationLink>
-                    <NavigationLink as={NavLink}
-                                    to="/admin"
-                                    fontSize={2}
-                                    color={theme.colors.gray30}
-                                    p={2}
-                                    activeClassName={activeLinkClassName}>
-                        Admin
-                    </NavigationLink>
-                </NavigationContainer>
+                {isMobile ? this.renderMobileNavigationMenu() :
+                    <NavigationContainer mt={3} mr={3}>
+                        <NavigationLink as={NavLink}
+                                        to="/products"
+                                        fontSize={2}
+                                        color={theme.colors.gray30}
+                                        p={2}
+                                        activeClassName={activeLinkClassName}>
+                            Cafés
+                        </NavigationLink>
+                        <NavigationLink as={NavLink}
+                                        to="/contact"
+                                        fontSize={2}
+                                        color={theme.colors.gray30}
+                                        p={2}
+                                        activeClassName={activeLinkClassName}>
+                            Contact
+                        </NavigationLink>
+                        <NavigationLink as={NavLink}
+                                        to="/admin"
+                                        fontSize={2}
+                                        color={theme.colors.gray30}
+                                        p={2}
+                                        activeClassName={activeLinkClassName}>
+                            Admin
+                        </NavigationLink>
+                    </NavigationContainer>
+                }
             </NavigationHeader>
         )
     }
