@@ -8,11 +8,30 @@ import { ILocation } from "../types/LocationTypes";
 import ProductsList from "../components/ProductsList"
 import {fetchLocations} from "../actions/LocationsActions";
 
+import styled from "styled-components";
+import {color, space, fontSize, fontWeight} from 'styled-system';
+import theme from "../styles/theme";
+
 interface IProps extends RouteComponentProps {
     fetchLocations: typeof fetchLocations;
     loading: boolean;
     locations: ILocation[]
 }
+
+interface IHeader {
+    color: string;
+    fontSize: number;
+    fontWeight: string;
+    m: number
+}
+
+
+const Header = styled.div <IHeader> `
+    ${color};
+    ${fontSize};
+    ${fontWeight};
+    ${space};
+`;
 
 class ProductsPage extends React.Component<IProps> {
 
@@ -25,14 +44,18 @@ class ProductsPage extends React.Component<IProps> {
         const search = searchParams.get("search") || "";
 
         return (
-            <div className='page-container'>
-                <p>
-                    Best coffee in the neighbourhood
-                </p>
+            <>
+                <Header color={theme.colors.black}
+                        fontSize={2}
+                        fontWeight={"bolder"}
+                        m={3}
+                >
+                    Explore cafes in Amsterdam
+                </Header>
                 <ProductsList locations={this.props.locations}
                               loading={this.props.loading}
                               search={search} />
-            </div>
+            </>
         )
     }
 }

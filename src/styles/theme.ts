@@ -52,14 +52,18 @@ const theme: DefaultTheme = {
         h2: '1.5rem',
         h3: '1.25rem',
         p: '1rem',
-        span: '0.75rem'
+        span: '0.75rem',
+        fontWeightBlack: '700',
     },
 
     space: [
         0, 4, 8, 16, 32, 64, 128, 256, 512
     ],
 
+    maxWidth: '1920px',
+
     breakpoints: [
+        '320px',
         '576px',
         '768px',
         '992px',
@@ -67,6 +71,7 @@ const theme: DefaultTheme = {
     ],
 
     mediaQueries: {
+        xs: '',
         small: '',
         medium: '',
         large: '',
@@ -76,6 +81,7 @@ const theme: DefaultTheme = {
 };
 
 theme.mediaQueries = {
+    xs: `@media screen and (min-width: ${theme.breakpoints[0]})`,
     small: `@media screen and (min-width: ${theme.breakpoints[0]})`,
     medium: `@media screen and (min-width: ${theme.breakpoints[1]})`,
     large: `@media screen and (min-width: ${theme.breakpoints[2]})`,

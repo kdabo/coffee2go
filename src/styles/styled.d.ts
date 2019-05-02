@@ -53,7 +53,8 @@ declare module 'styled-components' {
             h2: string,
             h3: string,
             p: string,
-            span: string
+            span: string,
+            fontWeightBlack: string
             // h1: string,
             // h2: string,
             // h3: string,
@@ -64,11 +65,13 @@ declare module 'styled-components' {
             // anchor: string
         }
 
+        maxWidth: string,
         space: number[],
 
         breakpoints: string[],
 
         mediaQueries: {
+            xs: string,
             small: string,
             medium: string,
             large: string,
