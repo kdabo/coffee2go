@@ -153,7 +153,7 @@ const NavigationLink = styled(NavLink)<INavigationLink> `
     &.${activeLinkClassName} {
       border-bottom: ${theme.colors.darkBlue30} solid 2px;
       color: ${theme.colors.gray30};
-    } 
+    }
 `;
 
 const NavigationButton = styled.div<INavigationButton>`

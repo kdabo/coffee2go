@@ -53,7 +53,8 @@ const theme: DefaultTheme = {
         h3: '1.25rem',
         p: '1rem',
         span: '0.75rem',
-        fontWeightBlack: '700',
+        fontWeightRegular: 'regular',
+        fontWeightBlack: 'bold',
     },
 
     space: [
