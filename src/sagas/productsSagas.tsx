@@ -30,7 +30,6 @@ function* watchHandleSelect() {
     yield takeEvery(LocationssActionTypes.GETSINGLE, handleSelect)
 }
 
-
 export function* productsSaga() {
     yield all([
         fork(watchHandleData),

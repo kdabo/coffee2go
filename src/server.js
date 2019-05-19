@@ -43,14 +43,13 @@ app.get("/api/nearby", async (req, res) => {
   let latitude = req.query.latitude;
   let longitude = req.query.longitude;
 
-
-
   const requestConfig = {
     method: 'get',
     baseURL: `${API_ENDPOINT}/search`,
     responseType: 'json',
     headers: {'Authorization': `Bearer ${YELP_API_KEY}`},
     params: {
+      term: 'Coffee',
       latitude: latitude,
       longitude: longitude
     },

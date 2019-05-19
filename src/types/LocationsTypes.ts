@@ -1,4 +1,4 @@
-import { ILocation } from "./LocationTypes";
+import {ILocation} from "./LocationTypes";
 
 export enum LocationssActionTypes {
     GETALL = "GETALL",
@@ -6,7 +6,7 @@ export enum LocationssActionTypes {
     FETCH_ERROR = "FETCH_ERROR",
     GETSINGLE = "GETSINGLE",
     FETCH_SINGLE_SUCCESS = "FETCH_SINGLE_SUCCESS",
-    LOADING = "LOADING",
+    LOADING = "LOADING"
 }
 
 export interface ILocationsGetAllAction {
@@ -35,11 +35,11 @@ export interface ILocationErrorAction {
     type: LocationssActionTypes.FETCH_ERROR,
 }
 
-export type LocationssAction = ILocationsGetAllAction | ILocationLoadingAction | ILocationGetSingleAction | ILocationSuccessAction | ILocationErrorAction | ILocationSingleSuccessAction;
-
 export interface IBusinesses {
     businesses: ILocation[];
 }
+
+export type LocationssAction = ILocationsGetAllAction | ILocationLoadingAction | ILocationGetSingleAction | ILocationSuccessAction | ILocationErrorAction | ILocationSingleSuccessAction;
 
 export interface ILocationState {
     readonly locations: IBusinesses;

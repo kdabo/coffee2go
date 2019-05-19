@@ -132,14 +132,17 @@ const OpeningHours = styled.div < IOpeningHours > `
     ${fontFamily};
 `;
 
+const Image = styled.div < {} > `
+    display: block;
+    box-sizing: border-box;
+`;
+
 const ProductsList: React.SFC<IProps> = props => {
     const search = props.search;
 
     if (!props.locations) {
         return <div>Loading...</div>
     }
-
-    console.log(props.locations);
 
     return (
         <List m={3}>
@@ -172,12 +175,14 @@ const ProductsList: React.SFC<IProps> = props => {
                                     <OpeningHours color={theme.colors.green30}
                                                   fontSize={1}
                                                   fontFamily={theme.typography.fontFamilySecondary}>
-                                    &#8226; {location.is_closed ? "Closed" : "Open now"}</OpeningHours>
+                                        &#8226; {location.is_closed ? "Closed" : "Open now"}</OpeningHours>
                                 </div>
-                                <img src={location.image_url}
-                                     width={94}
-                                     height={114}
-                                />
+                                <Image>
+                                    <img src={location.image_url}
+                                         width={94}
+                                         height={114}
+                                    />
+                                </Image>
                             </ListItem>
                         </ListItemLink>
                     )

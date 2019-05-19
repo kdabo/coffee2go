@@ -189,7 +189,7 @@ class Header extends React.Component<IProps, IState> {
 
     private handleSearchKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            this.props.history.push(`/products?search=${this.state.search}`);
+            this.props.history.push(`/cafes?search=${this.state.search}`);
         }
     };
 

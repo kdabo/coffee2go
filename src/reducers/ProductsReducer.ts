@@ -12,7 +12,6 @@ const initialLocationState: ILocationState = {
 export const locationsReducer: Reducer<ILocationState> = (state = initialLocationState, action) => {
     switch (action.type) {
         case LocationssActionTypes.FETCH_SINGLE_SUCCESS: {
-            console.log("reducer", action.payload)
             return {
                 ...state,
                 currentLocation: action.payload,
