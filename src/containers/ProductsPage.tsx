@@ -66,8 +66,6 @@ class ProductsPage extends React.Component<IProps & GeolocatedProps> {
                     m={3}
             >
                 Explore cafes in Amsterdam,
-            </Header>
-            <ProductsPageContainer>
 
                 {!props.isGeolocationAvailable ? (
                     <div>Your browser does not support Geolocation.</div>
@@ -98,14 +96,18 @@ class ProductsPage extends React.Component<IProps & GeolocatedProps> {
                         ) : null}
                     </div>
 
-                    <ProductsList locations={this.props.locations}
-                                  loading={this.props.loading}
-                                  search={search}/>
+
                     </>
                 ) : (
                     <div>Getting the location data&hellip;</div>
 
                 )}
+
+            </Header>
+            <ProductsPageContainer>
+                <ProductsList locations={this.props.locations}
+                              loading={this.props.loading}
+                              search={search}/>
                 <Map/>
             </ProductsPageContainer>
             </>
