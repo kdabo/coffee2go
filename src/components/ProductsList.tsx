@@ -88,15 +88,15 @@ const Rating = styled.div < {className: string} > `
     display: inline-block;
     background: url('/star-rating.svg') 0 0 no-repeat;  
     ${({className}) => (className === "0" ? 'display: none;' : '')}
-    ${({className}) => (className === "05" ? 'background-position: -56px -14px;' : '')}
+    ${({className}) => (className === "05" ? 'background-position: -56px -15px;' : '')}
     ${({className}) => (className === "1" ? 'background-position: -56px 0;' : '')}
-    ${({className}) => (className === "15" ? 'background-position: -42px  -14px;' : '')}
+    ${({className}) => (className === "15" ? 'background-position: -42px  -15px;' : '')}
     ${({className}) => (className === "2" ? 'background-position: -42px 0px;' : '')}
-    ${({className}) => (className === "25" ? 'background-position: -28px -14px;' : '')}
+    ${({className}) => (className === "25" ? 'background-position: -28px -15px;' : '')}
     ${({className}) => (className === "3" ? 'background-position: -28px 0px;' : '')}
-    ${({className}) => (className === "35" ? 'background-position: -14px -14px;' : '')}
+    ${({className}) => (className === "35" ? 'background-position: -14px -15px;' : '')}
     ${({className}) => (className === "4" ? 'background-position: -14px 0;' : '')}
-    ${({className}) => (className === "45" ? 'background-position: 0 -14px;' : '')}
+    ${({className}) => (className === "45" ? 'background-position: 0 -15px;' : '')}
     ${({className}) => (className === "5" ? 'background-position: 0 0;' : '')}
 `;
 

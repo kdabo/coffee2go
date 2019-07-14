@@ -81,9 +81,11 @@ const NavigationHeader = styled.div < INavigationHeader > `
     align-items: center;
     top: 0px;
     background-color: white;
+    border-bottom: 1px dotted ${theme.colors.lightBlue5}
     
     ${theme.mediaQueries.medium} {
        position: sticky;
+       z-index: 100;
     }
 `;
 

@@ -9,6 +9,10 @@ export interface ILocation {
        address1: string;
        city: string
     };
+    coordinates: {
+        latitude: number;
+        longitude: number;
+    }
     price: string;
     review_count: number;
     rating: number;

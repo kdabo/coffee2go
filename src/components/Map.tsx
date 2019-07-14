@@ -1,63 +1,67 @@
 import * as React from 'react';
-import {connect} from "react-redux";
+import {GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 
-import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api'
+import {IMapMarker, IMapState} from "../types/MapTypes";
+import Loader from "../components/Loader";
+import theme from "../styles/theme";
 
-import {fetchMarkers} from "../actions/MapActions";
-import {IApplicationState} from "../reducers/Store";
-import {IMapMarker} from "../types/MapTypes";
-import Geolocation from "../components/Geolocation";
+type GenericObject = { [key: string]: any };
 
 interface IProps {
-   fetchMarkers: typeof fetchMarkers;
-  //  markers: IMapMarker[]
+    center: IMapMarker,
+    markers: GenericObject
 }
 
 class Map extends React.Component<IProps> {
 
-    componentDidMount() {
-        fetchMarkers({
-            latitude: 52.379189,
-            longitude: 4.899431
-        })
-    }
-
     render() {
+        const {center, markers} = this.props;
+
+        if (!center || !markers) {
+            return <Loader/>
+        }
+
+
+        const getMarkers = markers.map((marker: GenericObject, index: number) => {
+            return (
+                <Marker
+                    key={index}
+                    position={{
+                        lat: markers[index].latitude,
+                        lng: markers[index].longitude
+                    }}
+                />
+            )
+        });
+
         return (
             <LoadScript
+                id="script-loader"
                 googleMapsApiKey=""
             >
                 <GoogleMap
                     mapContainerStyle={{
-                        height: "800px",
-                        width: "800px"
+                        height: '800px',
+                        width: '800px',
+                        margin: '24px 16px 16px 0px'
                     }}
-                    zoom={10}
+                    zoom={13}
                     center={{
-                        lat: 52.379189,
-                        lng: 4.899431
+                        lat: center.latitude,
+                        lng: center.longitude
                     }}
+                    options={{
+                        draggable: true, // make map draggable
+                        scaleControl: true, // allow scale controle
+                        scrollwheel: true, // allow scroll wheel
+                    }}
+
                 >
-                    <Marker
-                        onLoad={marker => {
-                            console.log()
-                        }}
-                        position={{
-                            lat: 37.772,
-                            lng: -122.214
-                        }}
-                    />
+                    {getMarkers}
                 </GoogleMap>
             </LoadScript>
         )
     }
 }
 
-const mapStateToProps = ({markers}: IApplicationState) => {
-    console.log("markers", markers);
-    return {
-        markers: markers
-    }
-};
-
-export default connect(mapStateToProps, {fetchMarkers})(Map);
+export default Map;
