@@ -47,6 +47,7 @@ class ProductPage extends React.Component<IProps> {
         const location = this.props.location;
 
         return (
+
             <div className="page-container">
                 {/*prompt component invokes a confirmation dialog during navigation when certain condition is met*/}
                 <Prompt when={!this.props.added} message={this.navAwayMessage}/>

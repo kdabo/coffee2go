@@ -1,8 +1,8 @@
 import {DefaultTheme} from 'styled-components'
 
 const theme: DefaultTheme = {
-    borderRadius: '2px',
-    boxShadow: '5px 5px 8px -6px rgba(13,36,129,1)',
+    borderRadius: '12px',
+    boxShadow: '4px 6px 16px -8px rgba(13,36,129,1)',
 
     colors: {
         black: '#000',
@@ -48,13 +48,14 @@ const theme: DefaultTheme = {
         fontFamilyPrimary: "\'Rubik\', sans-serif'",
         fontFamilySecondary: '\'Roboto Mono\', monospace',
         lineHeight: '1.5',
-        h1: '1.75rem',
-        h2: '1.5rem',
-        h3: '1.25rem',
+        h1: '3rem',
+        h2: '2rem',
+        h3: '1.5rem',
         p: '1rem',
         span: '0.75rem',
-        fontWeightRegular: 'regular',
-        fontWeightBlack: 'bold',
+        fontWeightLight: '400',
+        fontWeightRegular: '500',
+        fontWeightBlack: '600',
     },
 
     space: [
@@ -83,10 +84,10 @@ const theme: DefaultTheme = {
 
 theme.mediaQueries = {
     xs: `@media screen and (min-width: ${theme.breakpoints[0]})`,
-    small: `@media screen and (min-width: ${theme.breakpoints[0]})`,
-    medium: `@media screen and (min-width: ${theme.breakpoints[1]})`,
-    large: `@media screen and (min-width: ${theme.breakpoints[2]})`,
-    extraLarge: `@media screen and (min-width: ${theme.breakpoints[3]})`,
+    small: `@media screen and (min-width: ${theme.breakpoints[1]})`,
+    medium: `@media screen and (min-width: ${theme.breakpoints[2]})`,
+    large: `@media screen and (min-width: ${theme.breakpoints[3]})`,
+    extraLarge: `@media screen and (min-width: ${theme.breakpoints[4]})`,
 };
 
 export default theme

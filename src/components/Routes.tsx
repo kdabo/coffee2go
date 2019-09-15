@@ -9,9 +9,11 @@ import ProductPage from "../containers/ProductPage";
 import NotFoundPage from "./NotFoundPage";
 import LoginPage from "./LoginPage";
 import ContactUsPage from "./ContactUsPage";
+import HomePage from "./HomePageView/HomePageView";
 
 // dynamic import with react lazy function
 const AdminPage = React.lazy(() => import("./AdminPage"));
+
 
 const Routes: React.SFC<RouteComponentProps> = (props) => {
     const [loggedIn] = React.useState(true);
@@ -25,6 +27,7 @@ const Routes: React.SFC<RouteComponentProps> = (props) => {
                                     classNames="animate">
                         <Switch>
                         <Redirect exact={true} from="/" to="/cafes"/>
+                        <Route path="/home" component={HomePage} />
                         <Route path="/cafes" exact={true} component={ProductsPage} />
                         <Route path="/cafes/:id" component={ProductPage} />
                         <Route path="/contact" component={ContactUsPage} />
