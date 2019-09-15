@@ -18,7 +18,8 @@ if (!YELP_API_KEY || !GOOGLE_MAPS_API_KEY){
 
 const API_ENDPOINT = 'https://api.yelp.com/v3/businesses';
 
-const port = 4000;
+const PORT = process.env.PORT || 4000;
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -114,7 +115,7 @@ app.use(helmet())
 app.use(serveStatic(path.join(__dirname, '..', 'build')))
 
 
-const server = app.listen(port, () => {
+const server = app.listen(PORT, () => {
   const port = server.address().port;
   console.log("App listening at port %s", port);
 });
