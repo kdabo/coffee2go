@@ -100,6 +100,10 @@ app.get("/api/locations/:id", async (req, res) => {
   }
 });
 
+app.get("/cafes",async (req, res) => {
+  return res.redirect("/")
+});
+
 
 //disable powered by
 app.disable('x-powered-by');

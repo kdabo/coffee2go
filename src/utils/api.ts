@@ -3,7 +3,7 @@ import {IMapMarker} from "../types/MapTypes";
 const controller = new AbortController();
 const signal = controller.signal;
 
-let API_ENDPOINT = 'http://www.coffee2go.io';
+let API_ENDPOINT = 'https://www.coffee2go.io';
 
 if (typeof window !== 'undefined') {
     if (document.location.hostname.indexOf('localhost') !== -1) {
