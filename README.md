@@ -12,7 +12,7 @@ Clone, setup, and run the project
 
 - `git clone https://github.com/kdabo/coffee2go.git`
 - `cd coffee2go`
-- `npm install`
+- `yarn`
 
 To run the project you have to generate API KEYS from:
 
