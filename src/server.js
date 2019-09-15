@@ -1,8 +1,21 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const axios = require("axios");
+const compress = require('compression')
+const serveStatic = require('serve-static');
+const timeout = require('connect-timeout');
+const path = require('path');
+const helmet = require('helmet');
 
 const YELP_API_KEY = process.env.YELP_API_KEY;
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+
+if (!YELP_API_KEY || !GOOGLE_MAPS_API_KEY){
+  console.log("ERROR: could not load YELP_API_KEY or GOOGLE_MAPS_API_KEY from ENV vars!")
+} else {
+  console.log("ENV vars loaded successfully! ")
+}
+
 const API_ENDPOINT = 'https://api.yelp.com/v3/businesses';
 
 const port = 4000;
@@ -85,6 +98,21 @@ app.get("/api/locations/:id", async (req, res) => {
     return res.send({})
   }
 });
+
+
+//disable powered by
+app.disable('x-powered-by');
+
+//set timeout for all requests 20s
+app.use(timeout(20000));
+
+app.use(compress())
+
+// security
+app.use(helmet())
+
+app.use(serveStatic(path.join(__dirname, '..', 'build')))
+
 
 const server = app.listen(port, () => {
   const port = server.address().port;

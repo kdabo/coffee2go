@@ -37,7 +37,7 @@ class Map extends React.Component<IProps> {
         return (
             <LoadScript
                 id="script-loader"
-                googleMapsApiKey=""
+                googleMapsApiKey="AIzaSyAqtvhv4IAOGDQsDzXmu4ejQPArzomcHlU"
             >
                 <GoogleMap
                     mapContainerStyle={{

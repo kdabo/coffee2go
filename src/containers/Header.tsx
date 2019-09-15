@@ -252,7 +252,9 @@ class Header extends React.Component<IProps, IState> {
         return (
             <NavigationHeader color={theme.colors.black}
                               width={"100%"}>
-                <Logo src={logo} alt="logo" mt={3} ml={3} mr={3} mb={3}/>
+                <a href={"/"}>
+                    <Logo src={logo} alt="logo" mt={3} ml={3} mr={3} mb={3}/>
+                </a>
                 {this.props.location.pathname === "/home" ? null :
                     <SearchWrapper width={[1 / 2]}>
                         <SearchIconWrapper>
@@ -296,14 +298,14 @@ class Header extends React.Component<IProps, IState> {
                                         activeClassName={activeLinkClassName}>
                             Contact
                         </NavigationLink>
-                        <NavigationLink as={NavLink}
-                                        to="/admin"
-                                        fontSize={3}
-                                        color={theme.colors.black}
-                                        p={2}
-                                        activeClassName={activeLinkClassName}>
-                            Admin
-                        </NavigationLink>
+                        {/*<NavigationLink as={NavLink}*/}
+                        {/*                to="/admin"*/}
+                        {/*                fontSize={3}*/}
+                        {/*                color={theme.colors.black}*/}
+                        {/*                p={2}*/}
+                        {/*                activeClassName={activeLinkClassName}>*/}
+                        {/*    Admin*/}
+                        {/*</NavigationLink>*/}
                     </NavigationContainer>
                 }
             </NavigationHeader>
