@@ -104,6 +104,10 @@ app.get("/cafes",async (req, res) => {
   return res.redirect("/")
 });
 
+app.get("/home",async (req, res) => {
+  return res.redirect("/")
+});
+
 
 //disable powered by
 app.disable('x-powered-by');

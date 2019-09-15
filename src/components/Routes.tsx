@@ -26,7 +26,7 @@ const Routes: React.SFC<RouteComponentProps> = (props) => {
                                    timeout={500}
                                     classNames="animate">
                         <Switch>
-                        <Redirect exact={true} from="/" to="/cafes"/>
+                        <Redirect exact={true} from="/" to="/home"/>
                         <Route path="/home" component={HomePage} />
                         <Route path="/cafes" exact={true} component={ProductsPage} />
                         <Route path="/cafes/:id" component={ProductPage} />

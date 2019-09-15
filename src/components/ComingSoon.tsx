@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from "styled-components";
 import theme from "../styles/theme";
 import {borderRadius, boxShadow, color, fontSize, fontWeight, space, width} from "styled-system";
+import PrimaryButton from './Button';
 
 
 interface IEmailInputfield {
@@ -157,28 +158,9 @@ const ComingSoon: React.SFC = () => {
         <ComingSoonContainer>
             <Title className={animated + ' ' + fontalicious}>Coming soon.</Title>
             <ExplainText>We are working hard on our app. Follow the news updates and you'll be the first to know when it's ready.</ExplainText>
-            <Form>
-                <EmailInputfield
-                    type="email"
-                    mr={3}
-                    mt={3}
-                    mb={3}
-                    pl={2}
-                    pr={2}
-                    width={"100%"}
-                    fontSize={2}
-                    fontWeight={"normal"}
-                    boxShadow={theme.boxShadow}
-                    borderRadius={theme.borderRadius}
-                    placeholder="Your email"
-                />
-                <Submit
-                    type="submit"
-                    value="Notify me"
-                    fontSize={2}
-                    backgroundColor={theme.colors.white}
-                />
-            </Form>
+            <PrimaryButton path={'contact'}>
+                Notify Me
+            </PrimaryButton>
         </ComingSoonContainer>
     )
 };

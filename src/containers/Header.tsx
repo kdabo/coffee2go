@@ -283,6 +283,14 @@ class Header extends React.Component<IProps, IState> {
                 {isMobileOnly ? this.renderMobileNavigationMenu() :
                     <NavigationContainer mt={3} mr={3}>
                         <NavigationLink as={NavLink}
+                                        to="/home"
+                                        fontSize={3}
+                                        color={theme.colors.black}
+                                        p={2}
+                                        activeClassName={activeLinkClassName}>
+                            Home
+                        </NavigationLink>
+                        <NavigationLink as={NavLink}
                                         to="/cafes"
                                         fontSize={3}
                                         color={theme.colors.black}
