@@ -51,6 +51,7 @@ const theme: DefaultTheme = {
         h1: '3rem',
         h2: '2rem',
         h3: '1.5rem',
+        h4: '1.25rem',
         p: '1rem',
         span: '0.75rem',
         fontWeightLight: '400',
