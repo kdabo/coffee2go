@@ -10,6 +10,7 @@ interface Iprops {
 
 export const Title = styled.h2 < Iprops > `
     display: block;
+    text-align: center;
     ${space};
     color: ${theme.colors.black}
     font-weight: ${theme.typography.fontWeightRegular}

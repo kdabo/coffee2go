@@ -7,8 +7,8 @@ import styled, { css, keyframes } from 'styled-components';
 import theme from '../styles/theme';
 
 import { HowItWorks } from '../constants/HomePageConstants';
-import coffeeShop from '../assets/coffeeShop.jpg';
-import payAhead from '../assets/payAhead.jpg';
+// import coffeeShop from '../../public/coffeeShop.jpg';
+import payAhead from '../../public/payAhead.jpg';
 
 
 interface VerticalSliderItemContainerProps {
@@ -33,7 +33,8 @@ export const VerticalSliderContainer = styled.div`
   }
 
   ${theme.mediaQueries.xs} {
-      min-height: 325px;
+      min-height: 500px;
+      padding-left: 0.5rem;
   }
 
  ${theme.mediaQueries.medium} {
@@ -44,16 +45,16 @@ export const VerticalSliderContainer = styled.div`
   };
 `;
 
-export const VerticalSliderItemContainer = styled.div < VerticalSliderItemContainerProps > `
+export const VerticalSliderItemContainer = styled.div <VerticalSliderItemContainerProps>`
   position: absolute;
 
-
-  ${theme.mediaQueries.small} {
-    width: 100%;
+  ${theme.mediaQueries.xs} {
+    
+    width: 300px;
     transform-origin: center;
 
     animation: ${p =>
-  getMobileKeyFrameAnimation(p.position)} .5s ease-out forwards;
+    getMobileKeyFrameAnimation(p.position)} .5s ease-out forwards;
   };
 
   ${theme.mediaQueries.large} {
@@ -61,7 +62,7 @@ export const VerticalSliderItemContainer = styled.div < VerticalSliderItemContai
 
 
     ${p => css`
-      animation: ${FromDesktopPosition[ p.position ]} 0.75s ease-in-out forwards;
+      animation: ${FromDesktopPosition[p.position]} 0.75s ease-in-out forwards;
     `}
   };
 `;
@@ -70,8 +71,8 @@ export const VerticalSliderItemContainer = styled.div < VerticalSliderItemContai
  * MOBILE ANIMATION
  */
 const MOBILE_SCALE_OFFSET = 0.2;
-const MOBILE_BOTTOM_BASE = 32;
-const MOBILE_BOTTOM_OFFSET = 14;
+const MOBILE_BOTTOM_BASE = 42;
+const MOBILE_BOTTOM_OFFSET = 24;
 
 const getMobileKeyFrameAnimation = (position: number) => {
   const oldPosition = position === 2 ? 0 : position + 1;
@@ -231,18 +232,19 @@ export default class VerticalSlider extends Component<State> {
     return newIndex < 0 ? newIndex + nrOfItems : newIndex;
   };
   
-  getGif = (gif: string) => {
-    switch (gif) {
-      case coffeeShop:
-        return coffeeShop;
-      case payAhead:
-        return coffeeShop;
-      case coffeeShop:
-        return coffeeShop;
-      default:
-        return coffeeShop;
-    }
-  };
+  // getGif = (gif: string) => {
+  //   switch (gif) {
+  //     case coffeeShop:
+  //       return coffeeShop;
+  //       break;
+  //     case payAhead:
+  //       return payAhead;
+  //       break;
+  //     case coffeeShop:
+  //       return coffeeShop;
+  //       break;
+  //   }
+  // };
   
   handleActiveListItemChange2 = () => {
     this.setState({
@@ -266,7 +268,7 @@ export default class VerticalSlider extends Component<State> {
     
     return HowItWorks.length ? (
       <React.Fragment>
-        <Title>How it works?</Title>
+        <Title p={3}>How it works?</Title>
         <VerticalSliderContainer
           onClick={this.updateToNextItem}
         >
@@ -278,16 +280,16 @@ export default class VerticalSlider extends Component<State> {
               <VerticalSliderItem
                 step={item.STEP}
                 title={item.TITLE}
-                icon={this.getGif(item.ICON)}
+                src={item.ICON}
               />
             </VerticalSliderItemContainer>
           ))}
-          <ButtonList>
-            <ButtonListItem className={this.state.activeListItem1 ? 'activeListItem' : 'inactiveListItem'}
-              >Step 1</ButtonListItem>
-            <ButtonListItem className={this.state.activeListItem2 ? 'activeListItem' : 'inactiveListItem'}>Step 2</ButtonListItem>
-            <ButtonListItem className={this.state.activeListItem3 ? 'activeListItem' : 'inactiveListItem'}>Step 3</ButtonListItem>
-          </ButtonList>
+          {/*<ButtonList>*/}
+            {/*<ButtonListItem className={this.state.activeListItem1 ? 'activeListItem' : 'inactiveListItem'}*/}
+              {/*>Step 1</ButtonListItem>*/}
+            {/*<ButtonListItem className={this.state.activeListItem2 ? 'activeListItem' : 'inactiveListItem'}>Step 2</ButtonListItem>*/}
+            {/*<ButtonListItem className={this.state.activeListItem3 ? 'activeListItem' : 'inactiveListItem'}>Step 3</ButtonListItem>*/}
+          {/*</ButtonList>*/}
         </VerticalSliderContainer>
       </React.Fragment>
     ) : null;

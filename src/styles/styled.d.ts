@@ -52,6 +52,7 @@ declare module 'styled-components' {
       h1: string,
       h2: string,
       h3: string,
+      h4: string,
       p: string,
       span: string,
       fontWeightLight: string,
