@@ -8,7 +8,7 @@ import theme from '../styles/theme';
 
 import { HowItWorks } from '../constants/HomePageConstants';
 // import coffeeShop from '../../public/coffeeShop.jpg';
-import payAhead from '../../public/payAhead.jpg';
+// import payAhead from '../../public/payAhead.jpg';
 
 
 interface VerticalSliderItemContainerProps {
@@ -76,7 +76,7 @@ const MOBILE_BOTTOM_OFFSET = 24;
 
 const getMobileKeyFrameAnimation = (position: number) => {
   const oldPosition = position === 2 ? 0 : position + 1;
-  
+
   return keyframes`
     0% { ${getMobilePositionStyles(oldPosition)} }
     10% { z-index: ${3 - oldPosition}; }
@@ -187,51 +187,51 @@ const ButtonListItem = styled.li < {} > `
 `;
 
 export default class VerticalSlider extends Component<State> {
-  
+
   state = {
     foregroundItemIndex: 0,
     activeListItem1: true,
     activeListItem2: false,
     activeListItem3: false
   };
-  
+
   updateToNextItem = () => {
     this.setState({
       foregroundItemIndex: this.getNextItemIndex(1),
     });
   };
-  
+
   getNextItemIndex = (increment: number): number => {
     const {foregroundItemIndex, activeListItem1, activeListItem2, activeListItem3} = this.state;
     const sliderItem = [ 'preorder', 'pay', 'pickup' ];
     let itemIndex = foregroundItemIndex + increment;
-    
+
     if (itemIndex >= sliderItem.length) {
       itemIndex = itemIndex === sliderItem.length ? 0 : increment - 1;
     }
-    
+
     return itemIndex;
   };
-  
-  
+
+
   getPosition = (itemIndex: number,
                  foregroundItemIndex: number): number => {
     const sliderItem = [ 'preorder', 'pay', 'pickup' ];
-    
+
     if (foregroundItemIndex === 0) {
       return itemIndex;
     }
-    
+
     if (itemIndex === foregroundItemIndex) {
       return 0;
     }
-    
+
     const nrOfItems = sliderItem.length;
     const newIndex = itemIndex - foregroundItemIndex;
-    
+
     return newIndex < 0 ? newIndex + nrOfItems : newIndex;
   };
-  
+
   // getGif = (gif: string) => {
   //   switch (gif) {
   //     case coffeeShop:
@@ -245,7 +245,7 @@ export default class VerticalSlider extends Component<State> {
   //       break;
   //   }
   // };
-  
+
   handleActiveListItemChange2 = () => {
     this.setState({
       activeListItem1: false,
@@ -253,7 +253,7 @@ export default class VerticalSlider extends Component<State> {
       activeListItem3: false
     })
   };
-  
+
   handleActiveListItemChange3 = () => {
     this.setState({
       activeListItem1: false,
@@ -261,11 +261,11 @@ export default class VerticalSlider extends Component<State> {
       activeListItem3: true
     })
   };
-  
-  
+
+
   render() {
     const {foregroundItemIndex} = this.state;
-    
+
     return HowItWorks.length ? (
       <React.Fragment>
         <Title p={3}>How it works?</Title>
